@@ -2,6 +2,11 @@ require('dotenv').config();
 const express = require('express');
 const db = require('mongoose');
 const app = express();
+const port = process.env.PORT || 3001;
+const path = require('path');
+
+app.use(express.static(path.join(__dirname, '../../build')));
+
 db.connect(process.env.DB_URL_PRD, {useNewUrlParser: true, useUnifiedTopology: true});
 
 const Citta = db.model('Citta', { 
@@ -43,6 +48,10 @@ app.get("/api/citta/:citta", function(req, res) {
     res.send(popolazione);
 });
 
+app.get('*', function (req, res) {
+    res.sendFile(path.join(__dirname, '../../build', 'index.html'));
+});
+
 app.post("/api/citta", function(req, res, next) {
     const nuovaCitta = new Citta({ 
         regione: req.body.regione,
@@ -53,4 +62,4 @@ app.post("/api/citta", function(req, res, next) {
     res.redirect('back');
 });
 
-app.listen(3001);
+app.listen(port);

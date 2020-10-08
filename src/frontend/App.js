@@ -45,7 +45,7 @@ const App = (props) => {
   const [popolazione, setPopolazione] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/api/regioni")
+    fetch("api/regioni")
     .then(res => res.json())
     .then(data => {
       setRegioni(data)
@@ -53,7 +53,7 @@ const App = (props) => {
   })
 
   const handleRegione = regione => {
-    fetch(`http://localhost:3001/api/regioni/${regione.toLowerCase()}`)
+    fetch(`/api/regioni/${regione.toLowerCase()}`)
     .then(res => res.json())
     .then(data => {
       setPopolazione("");
@@ -62,7 +62,7 @@ const App = (props) => {
   }
 
   const handleCitta = citta => {
-    fetch(`http://localhost:3001/api/citta/${citta.toLowerCase()}`)
+    fetch(`/api/citta/${citta.toLowerCase()}`)
     .then(res => res.json())
     .then(data => {
       setPopolazione(data[data.length - 1])
