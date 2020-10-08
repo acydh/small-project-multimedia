@@ -15,7 +15,7 @@ const Form = () => {
     const classes = useStyles();
     return (
         
-        <form className={classes.root} action="http://localhost:3001/api/citta/" method="POST" autoComplete="off">
+        <form className={classes.root} action="/api/citta/" method="POST" autoComplete="off">
             <FormControl>  
             <Input placeholder="Regione" inputProps={{ 'aria-label': 'description' }} type="text" id="regione" name="regione" required />
             <Input placeholder="Citta" type="text" id="citta" name="citta" required />
