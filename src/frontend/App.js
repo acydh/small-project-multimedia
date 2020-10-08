@@ -79,7 +79,7 @@ const App = (props) => {
           </ul>
         </Box>
         <Box>
-          <h1>Citta</h1>
+          <h1>Citta'</h1>
           <ul>
             {citta.map(citta => <li key={citta} onClick={() => handleCitta(citta)}>{citta}</li>)}
           </ul>
